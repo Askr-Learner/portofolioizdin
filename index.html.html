@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mochammad Ijdin Rozaqi — Marine &amp; Offshore Structural Engineer</title>
+<!--
+====================================================================
+  HOW THIS FILE IS ORGANIZED
+====================================================================
+  <style>  — colors, fonts, animation rules.
+  <body>   — banner comments mark each section:
+             NAV, HERO, ABOUT, EXPERIENCE, THESIS CASE STUDY,
+             COURSE HIGHLIGHTS, CERTIFICATIONS, DIGITAL DESIGN,
+             MOTIVATION, CONTACT, FOOTER.
+             Ctrl+F "SECTION:" to jump between them.
+
+  PHOTOS — every image spot is a "photo-slot": a dashed placeholder
+  box with a label telling you exactly what to shoot and what size.
+  To add a real photo:
+    1. Make a folder called "images" next to this HTML file.
+    2. Drop your photo in it (match the filename shown in the label,
+       e.g. images/hero.jpg).
+    3. Done — the dashed box disappears once the image loads.
+====================================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:wght@500;700;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F8F7;
+    --paper-deep:#EEF2F2;
+    --ink:#16232E;
+    --ink-soft:#4A5C6B;
+    --ink-faint:#8A9AA6;
+    --brass:#B8895B;
+    --brass-deep:#96693D;
+    --sea:#3E7C8C;
+    --sea-deep:#265B69;
+    --sea-light:#CFE4E8;
+    --line:#DAE3E4;
+    --alert:#C2542E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  body{background:var(--paper); color:var(--ink); font-family:'IBM Plex Sans', sans-serif; line-height:1.6; overflow-x:hidden;}
+  ::selection{background:var(--sea); color:var(--paper);}
+  h1,h2,h3,.stencil{font-family:'Big Shoulders Stencil', sans-serif; text-transform:uppercase; letter-spacing:0.02em; line-height:0.95; font-weight:800;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;}
+  section{position:relative; padding:110px 8vw 110px calc(8vw + 70px);}
+  @media (max-width:900px){ section{padding:80px 6vw;} }
+  .container{max-width:1180px; margin:0 auto;}
+
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--sea-deep); display:flex; align-items:center; gap:10px; margin-bottom:18px;}
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--brass); display:inline-block;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(2.1rem, 5vw, 3.2rem);}
+  .section-head p{max-width:380px; color:var(--ink-soft); font-size:0.95rem;}
+
+  /* ============================================================
+     PHOTO PLACEHOLDER SYSTEM — see notes at top of file.
+     ============================================================ */
+  .ph-label{
+    position:absolute; inset:0; z-index:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+    background:repeating-linear-gradient(45deg, var(--paper-deep), var(--paper-deep) 12px, var(--paper) 12px, var(--paper) 24px);
+    border:2px dashed var(--sea);
+    font-family:'IBM Plex Mono'; font-size:0.64rem; color:var(--ink-soft);
+    text-align:center; padding:12px;
+  }
+  .ph-label .ph-icon{font-size:1.5rem;}
+  .ph-label b{color:var(--sea-deep); text-transform:uppercase; letter-spacing:0.05em;}
+  .photo-slot img{position:relative; z-index:1;}
+
+  /* ============================================================
+     DRAFT-MARK SCROLL GAUGE — signature scroll-progress element,
+     styled like the waterline draft marks painted on a ship hull.
+     ============================================================ */
+  #draft-gauge{position:fixed; left:18px; top:0; height:100vh; width:52px; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:500; pointer-events:none;}
+  .gauge-rail{position:relative; height:60vh; width:26px; border:1px solid var(--ink); background:var(--paper-deep); border-radius:2px; overflow:hidden;}
+  .gauge-fill{position:absolute; left:0; right:0; bottom:0; height:0%; background:linear-gradient(180deg, var(--sea-light), var(--sea)); transition:height 0.08s linear;}
+  .gauge-ticks{position:absolute; inset:0; display:flex; flex-direction:column; justify-content:space-between; padding:4px 0;}
+  .gauge-ticks span{width:100%; height:1px; background:rgba(22,35,46,0.35);}
+  .gauge-readout{margin-top:14px; font-family:'IBM Plex Mono'; font-size:0.6rem; letter-spacing:0.08em; color:var(--ink-soft); writing-mode:vertical-rl;}
+  .gauge-readout strong{color:var(--sea-deep); font-size:0.7rem;}
+  @media (max-width:900px){ #draft-gauge{display:none;} }
+
+  /* ---------- NAV ---------- */
+  header{position:fixed; top:0; left:0; right:0; z-index:600; background:rgba(246,248,247,0.88); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav{max-width:1400px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:15px 8vw 15px calc(8vw + 70px);}
+  @media (max-width:900px){ nav{padding:15px 6vw;} }
+  .brand{font-family:'Big Shoulders Stencil'; font-weight:900; font-size:1.05rem; letter-spacing:0.05em; display:flex; align-items:center; gap:8px;}
+  .brand .dot{width:8px; height:8px; border-radius:50%; background:var(--alert);}
+  .navlinks{display:flex; gap:26px; list-style:none;}
+  .navlinks a{font-family:'IBM Plex Mono'; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--ink-soft); position:relative; padding-bottom:4px;}
+  .navlinks a::after{content:""; position:absolute; left:0; bottom:0; height:1px; width:0; background:var(--sea); transition:width 0.3s ease;}
+  .navlinks a.active, .navlinks a:hover{color:var(--ink);}
+  .navlinks a.active::after, .navlinks a:hover::after{width:100%;}
+  #navToggle{display:none; background:none; border:1px solid var(--ink); border-radius:2px; padding:8px 10px; font-family:'IBM Plex Mono'; cursor:pointer;}
+  @media (max-width:960px){
+    .navlinks{position:fixed; top:58px; right:0; height:calc(100vh - 58px); background:var(--paper); flex-direction:column; gap:22px; padding:36px 30px; width:220px; transform:translateX(100%); transition:transform 0.35s ease; border-left:1px solid var(--line); overflow-y:auto;}
+    .navlinks.open{transform:translateX(0);}
+    #navToggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  #hero{min-height:100vh; display:flex; align-items:center; padding-top:150px; position:relative; isolation:isolate; color:var(--paper);}
+  .hero-photo{position:absolute; inset:0; z-index:-1; overflow:hidden;}
+  .hero-photo img{width:100%; height:100%; object-fit:cover; filter:grayscale(15%) contrast(1.05) brightness(0.6);}
+  .hero-photo::after{content:""; position:absolute; inset:0; background:linear-gradient(100deg, rgba(22,35,46,0.93) 0%, rgba(22,35,46,0.74) 45%, rgba(38,91,105,0.5) 100%);}
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero-title{font-size:clamp(2.6rem, 7vw, 5.6rem); color:var(--paper);}
+  .hero-title em{font-style:normal; -webkit-text-stroke:1.4px var(--paper); color:transparent;}
+  .hero-sub{max-width:480px; color:#C9D6DA; font-size:1.02rem; margin:24px 0 34px;}
+  .hero-name{font-family:'IBM Plex Mono'; font-size:0.85rem; letter-spacing:0.08em; color:var(--sea-light); margin-bottom:10px;}
+  .btn-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{font-family:'IBM Plex Mono'; font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; padding:13px 24px; border-radius:2px; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:transform 0.25s ease, background 0.25s ease, color 0.25s ease;}
+  .btn-solid{background:var(--sea-light); color:var(--ink);}
+  .btn-solid:hover{background:var(--paper); transform:translateY(-2px);}
+  .btn-ghost{border:1px solid rgba(246,248,247,0.6); color:var(--paper);}
+  .btn-ghost:hover{background:var(--paper); color:var(--ink); transform:translateY(-2px);}
+  .hero-plate{position:relative; aspect-ratio:1/1; background:rgba(246,248,247,0.95); border:1px solid rgba(246,248,247,0.5); border-radius:2px; padding:8%; box-shadow:0 30px 60px -24px rgba(0,0,0,0.55); transform:rotate(1.3deg);}
+  .hero-plate svg{width:100%; height:100%;}
+  .hero-plate .plate-label{position:absolute; top:14px; left:18px; font-family:'IBM Plex Mono'; font-size:0.6rem; letter-spacing:0.1em; color:var(--ink-soft); text-transform:uppercase;}
+  .hull-line{fill:none; stroke:var(--ink); stroke-width:1.4; stroke-dasharray:2200; stroke-dashoffset:2200; animation:draw 2.6s ease forwards 0.3s;}
+  .hull-line.secondary{stroke:var(--sea); stroke-dasharray:1400; stroke-dashoffset:1400; animation-duration:2.2s; animation-delay:0.7s;}
+  .hull-dot{fill:var(--brass); opacity:0; animation:fadeIn 0.6s ease forwards 2.4s;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  @keyframes fadeIn{to{opacity:1;}}
+  .scroll-cue{position:absolute; bottom:34px; left:calc(8vw + 70px); font-family:'IBM Plex Mono'; font-size:0.68rem; letter-spacing:0.15em; color:#C9D6DA; display:flex; align-items:center; gap:10px; z-index:1;}
+  .scroll-cue .line{width:1px; height:32px; background:#C9D6DA; position:relative; overflow:hidden;}
+  .scroll-cue .line::after{content:""; position:absolute; top:-100%; left:0; width:100%; height:100%; background:var(--sea); animation:drip 1.8s ease-in-out infinite;}
+  @keyframes drip{0%{top:-100%;} 100%{top:100%;}}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity 0.75s ease, transform 0.75s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .reveal.delay-1{transition-delay:0.1s;} .reveal.delay-2{transition-delay:0.2s;} .reveal.delay-3{transition-delay:0.3s;}
+
+  /* ---------- ABOUT ---------- */
+  #about{background:var(--paper-deep); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; position:relative;}
+  @media (max-width:900px){ .about-grid{grid-template-columns:1fr;} }
+  .about-copy p{color:var(--ink-soft); margin-bottom:18px; max-width:520px;}
+  .about-photo{width:170px; margin-left:auto; margin-bottom:-84px; position:relative; z-index:3; transform:rotate(-3deg);}
+  @media (max-width:900px){ .about-photo{margin:0 0 26px; transform:rotate(-2deg);} }
+  .photo-pin{position:relative; background:var(--paper); padding:10px 10px 30px; box-shadow:0 20px 38px -20px rgba(22,35,46,0.4); border:1px solid var(--line);}
+  .photo-pin .frame{position:relative; overflow:hidden; aspect-ratio:4/3;}
+  .photo-pin img{width:100%; height:100%; object-fit:cover; display:block;}
+  .photo-pin::before{content:""; position:absolute; top:-8px; left:50%; transform:translateX(-50%); width:14px; height:14px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #E3B48C, var(--brass-deep)); box-shadow:0 3px 6px rgba(0,0,0,0.35); z-index:2;}
+  .photo-pin .cap{position:absolute; left:10px; right:10px; bottom:9px; font-family:'IBM Plex Mono'; font-size:0.58rem; letter-spacing:0.05em; color:var(--ink-soft); text-transform:uppercase;}
+  .contact-row{display:flex; gap:14px; margin-top:22px; flex-wrap:wrap;}
+  .contact-pill{display:flex; align-items:center; gap:8px; border:1px solid var(--line); background:var(--paper); padding:9px 16px; border-radius:20px; font-family:'IBM Plex Mono'; font-size:0.72rem; text-decoration:none; color:var(--ink-soft); transition:border-color 0.25s ease, color 0.25s ease;}
+  .contact-pill:hover{border-color:var(--sea); color:var(--sea-deep);}
+  .stat-row{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:36px;}
+  .stat-card{border:1px solid var(--line); background:var(--paper); padding:20px; border-radius:2px;}
+  .stat-card .num{font-family:'Big Shoulders Stencil'; font-weight:800; font-size:1.5rem; color:var(--sea-deep);}
+  .stat-card .lbl{font-family:'IBM Plex Mono'; font-size:0.64rem; letter-spacing:0.08em; color:var(--ink-soft); text-transform:uppercase; margin-top:4px;}
+  .gauges{display:grid; grid-template-columns:1fr 1fr; gap:26px 18px;}
+  .gauge-card{text-align:center;}
+  .gauge-card svg{width:100%; max-width:160px;}
+  .gauge-card .g-label{font-family:'IBM Plex Mono'; font-size:0.64rem; letter-spacing:0.06em; color:var(--ink-soft); text-transform:uppercase; margin-top:4px;}
+  .gauge-card .g-pct{font-family:'Big Shoulders Stencil'; font-size:1.3rem; color:var(--ink); font-weight:700;}
+
+  /* ---------- EXPERIENCE (SHIP'S LOG) ---------- */
+  .log{position:relative; padding-left:32px; border-left:1px solid var(--line);}
+  .log-entry{position:relative; padding-bottom:58px;}
+  .log-entry:last-child{padding-bottom:0;}
+  .log-entry::after{content:""; display:table; clear:both;}
+  .log-entry::before{content:""; position:absolute; left:-37px; top:6px; width:11px; height:11px; background:var(--paper); border:2px solid var(--sea); border-radius:50%;}
+  .log-meta{display:flex; flex-wrap:wrap; gap:12px; align-items:baseline; margin-bottom:8px;}
+  .log-meta .role{font-family:'Big Shoulders Stencil'; font-weight:800; font-size:1.45rem;}
+  .log-meta .date{font-family:'IBM Plex Mono'; font-size:0.68rem; color:var(--brass-deep); letter-spacing:0.06em; border:1px solid var(--brass); padding:3px 9px; border-radius:20px;}
+  .log-vessel{font-family:'IBM Plex Mono'; font-size:0.82rem; color:var(--sea-deep); margin-bottom:12px;}
+  .log-entry ul{color:var(--ink-soft); padding-left:20px; max-width:620px;}
+  .log-entry li{margin-bottom:6px;}
+  .log-photo{width:140px; float:right; margin:0 0 14px 22px; transform:rotate(2.5deg);}
+  .log-entry:nth-child(even) .log-photo{transform:rotate(-2.5deg);}
+  @media (max-width:640px){ .log-photo{width:110px; float:none; margin:0 0 14px;} }
+
+  /* ---------- TECHNICAL ANALYSIS ---------- */
+  #analysis{background:var(--paper-deep); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .analysis-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;}
+  @media (max-width:900px){ .analysis-grid{grid-template-columns:1fr;} }
+  .analysis-card{background:var(--paper); border:1px solid var(--line); border-radius:2px; overflow:hidden; display:flex; flex-direction:column; transition:transform 0.35s ease, box-shadow 0.35s ease;}
+  .analysis-card:hover{transform:translateY(-6px); box-shadow:0 16px 30px -20px rgba(22,35,46,0.35);}
+  .analysis-thumb{aspect-ratio:16/10; position:relative;}
+  .analysis-body{padding:20px;}
+  .analysis-body .tag{font-family:'IBM Plex Mono'; font-size:0.62rem; letter-spacing:0.1em; color:var(--sea-deep); text-transform:uppercase; margin-bottom:8px;}
+  .analysis-body h3{font-family:'IBM Plex Sans'; text-transform:none; letter-spacing:0; font-weight:700; font-size:1.05rem; margin-bottom:8px;}
+  .analysis-body .proj{font-family:'IBM Plex Mono'; font-size:0.7rem; color:var(--brass-deep); margin-bottom:10px;}
+  .analysis-body p{color:var(--ink-soft); font-size:0.85rem;}
+
+  /* ---------- THESIS CASE STUDY (numbered stepper) ---------- */
+  #thesis{background:var(--paper-deep); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .thesis-title{font-size:clamp(1.3rem, 3vw, 1.8rem); max-width:760px; color:var(--ink-soft); margin-bottom:54px; font-family:'IBM Plex Sans'; text-transform:none; letter-spacing:0; font-weight:500;}
+  .thesis-title b{color:var(--ink); font-weight:600;}
+  .stepper{position:relative; padding-left:60px; border-left:1px solid var(--line);}
+  .step{position:relative; padding-bottom:64px; display:grid; grid-template-columns:150px 1fr; gap:22px; align-items:start;}
+  .step:last-child{padding-bottom:0;}
+  .step-num{position:absolute; left:-88px; top:-2px; width:52px; height:52px; border-radius:50%; background:var(--paper); border:2px solid var(--sea); display:flex; align-items:center; justify-content:center; font-family:'Big Shoulders Stencil'; font-weight:800; font-size:1.2rem; color:var(--sea-deep);}
+  @media (max-width:760px){ .step{grid-template-columns:1fr; gap:16px;} .step-num{position:static; margin-bottom:10px;} .stepper{padding-left:0; border-left:none;} }
+  .step-photo{aspect-ratio:4/3; border:1px solid var(--line);}
+  .step-body h3{font-family:'IBM Plex Sans'; text-transform:none; letter-spacing:0; font-weight:700; font-size:1.15rem; margin-bottom:8px;}
+  .step-body p{color:var(--ink-soft); font-size:0.92rem; max-width:520px;}
+
+  /* ---------- COURSE HIGHLIGHTS ---------- */
+  .course-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:22px;}
+  @media (max-width:900px){ .course-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .course-grid{grid-template-columns:1fr;} }
+  .course-card{border:1px solid var(--line); background:var(--paper); border-radius:2px; overflow:hidden; transition:transform 0.35s ease;}
+  .course-card:hover{transform:translateY(-5px);}
+  .course-card .thumb{aspect-ratio:4/3; position:relative;}
+  .course-card .info{padding:16px;}
+  .course-card h3{font-family:'IBM Plex Sans'; text-transform:none; letter-spacing:0; font-weight:700; font-size:0.95rem; margin-bottom:6px;}
+  .course-card p{color:var(--ink-soft); font-size:0.8rem;}
+
+  /* ---------- CERTIFICATIONS ---------- */
+  #certifications{}
+  .cert-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;}
+  @media (max-width:900px){ .cert-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:600px){ .cert-grid{grid-template-columns:1fr;} }
+  .cert-card{background:var(--paper); border:1px solid var(--line); border-radius:2px; padding:26px 22px; position:relative; overflow:hidden; transition:transform 0.35s ease, box-shadow 0.35s ease;}
+  .cert-card:hover{transform:translateY(-6px); box-shadow:0 16px 30px -20px rgba(22,35,46,0.35);}
+  .cert-seal{width:42px; height:42px; border-radius:50%; border:2px solid var(--brass); display:flex; align-items:center; justify-content:center; font-family:'Big Shoulders Stencil'; font-weight:800; color:var(--brass-deep); margin-bottom:16px; font-size:0.95rem;}
+  .cert-card h3{font-size:1.05rem; font-weight:700; text-transform:none; letter-spacing:0; font-family:'IBM Plex Sans'; margin-bottom:8px;}
+  .cert-card .issuer{font-family:'IBM Plex Mono'; font-size:0.68rem; color:var(--ink-soft); margin-bottom:14px;}
+  .cert-card .cert-id{font-family:'IBM Plex Mono'; font-size:0.62rem; color:var(--ink-faint); border-top:1px dashed var(--line); padding-top:10px;}
+  .chip-cloud{display:flex; flex-wrap:wrap; gap:10px; margin-top:28px;}
+  .chip{font-family:'IBM Plex Mono'; font-size:0.7rem; background:var(--paper); border:1px solid var(--line); color:var(--ink-soft); padding:8px 15px; border-radius:20px; transition:border-color 0.25s ease, color 0.25s ease;}
+  .chip:hover{border-color:var(--brass); color:var(--brass-deep);}
+
+  /* ---------- DIGITAL DESIGN ---------- */
+  #design{background:var(--paper-deep); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .design-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:24px;}
+  @media (max-width:760px){ .design-grid{grid-template-columns:1fr;} }
+  .design-card{background:var(--paper); border:1px solid var(--line); overflow:hidden; display:grid; grid-template-columns:1fr 1fr;}
+  @media (max-width:560px){ .design-card{grid-template-columns:1fr;} }
+  .design-thumb{aspect-ratio:1/1; position:relative;}
+  .design-info{padding:22px; display:flex; flex-direction:column; justify-content:center;}
+  .design-info .tag{font-family:'IBM Plex Mono'; font-size:0.62rem; letter-spacing:0.1em; color:var(--sea-deep); text-transform:uppercase; margin-bottom:8px;}
+  .design-info h3{font-family:'IBM Plex Sans'; text-transform:none; letter-spacing:0; font-weight:700; font-size:1.05rem; margin-bottom:8px;}
+  .design-info p{color:var(--ink-soft); font-size:0.85rem; margin-bottom:14px;}
+  .ig-link{font-family:'IBM Plex Mono'; font-size:0.7rem; text-decoration:none; color:var(--sea-deep); border-bottom:1px solid var(--sea-deep); width:fit-content;}
+
+  /* ---------- MOTIVATION ---------- */
+  #motivation{position:relative; text-align:center; overflow:hidden; color:var(--paper); isolation:isolate;}
+  .motivation-photo{position:absolute; inset:0; z-index:-2;}
+  .motivation-photo img{width:100%; height:100%; object-fit:cover; filter:grayscale(20%) contrast(1.1) brightness(0.48);}
+  .motivation-photo::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(22,35,46,0.78), rgba(22,35,46,0.55) 50%, rgba(22,35,46,0.86));}
+  .compass{position:absolute; top:50%; left:50%; width:880px; height:880px; transform:translate(-50%,-50%); opacity:0.14; z-index:-1; animation:spin 90s linear infinite;}
+  .compass circle, .compass line{stroke:var(--paper) !important;}
+  .compass polygon{fill:var(--sea-light) !important;}
+  @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg);}}
+  .motivation-inner{position:relative; z-index:1; max-width:800px; margin:0 auto;}
+  .quote{font-family:'Big Shoulders Stencil'; font-weight:700; font-size:clamp(1.5rem, 3.6vw, 2.4rem); line-height:1.18; margin:24px 0 30px;}
+  .quote span{color:var(--sea-light);}
+  #motivation .body-copy{color:#D7E1E3; max-width:620px; margin:0 auto 14px; font-size:0.96rem;}
+
+  /* ---------- CONTACT ---------- */
+  #contact{padding-bottom:70px;}
+  .contact-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:50px; align-items:end;}
+  @media (max-width:900px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-links{list-style:none; margin-top:22px;}
+  .contact-links li{border-top:1px solid var(--line); padding:15px 0; display:flex; justify-content:space-between; align-items:center;}
+  .contact-links li:last-child{border-bottom:1px solid var(--line);}
+  .contact-links a{text-decoration:none; font-size:1.05rem; transition:color 0.25s ease;}
+  .contact-links a:hover{color:var(--sea-deep);}
+  .contact-links .lbl{font-family:'IBM Plex Mono'; font-size:0.64rem; color:var(--ink-faint); letter-spacing:0.08em;}
+  footer{border-top:1px solid var(--line); padding:24px 8vw 24px calc(8vw + 70px); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:'IBM Plex Mono'; font-size:0.64rem; color:var(--ink-faint); letter-spacing:0.05em;}
+  @media (max-width:900px){ footer{padding:24px 6vw;} }
+</style>
+</head>
+<body>
+
+<div id="draft-gauge">
+  <div class="gauge-rail">
+    <div class="gauge-fill" id="gaugeFill"></div>
+    <div class="gauge-ticks"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+  <div class="gauge-readout">DRAFT <strong id="gaugeReadout">0.0</strong> M</div>
+</div>
+
+<!-- ============================ NAV ============================ -->
+<header>
+  <nav>
+    <div class="brand"><span class="dot"></span>M. IJDIN ROZAQI</div>
+    <button id="navToggle" aria-label="Toggle menu">MENU</button>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="#about" data-nav>About</a></li>
+      <li><a href="#experience" data-nav>Experience</a></li>
+      <li><a href="#analysis" data-nav>Analysis</a></li>
+      <li><a href="#thesis" data-nav>Thesis</a></li>
+      <li><a href="#course" data-nav>Course</a></li>
+      <li><a href="#certifications" data-nav>Certifications</a></li>
+      <li><a href="#design" data-nav>Design</a></li>
+      <li><a href="#contact" data-nav>Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ============================ SECTION: HERO ============================
+     Full-bleed banner. Upload a wide photo of yourself at work, on a
+     survey/site visit, or a strong offshore/marine scene.
+     Recommended: images/hero.jpg, 1920×1080 or larger. ======================= -->
+<section id="hero">
+  <div class="hero-photo photo-slot" aria-hidden="true">
+    <div class="ph-label"><span class="ph-icon">🖼️</span><b>Hero Banner</b>Wide photo of you at work, or an<br>offshore/marine scene<br>(images/hero.jpg · 1920×1080+)</div>
+    <img src="images/hero.jpg" alt="" onerror="this.style.display='none'">
+  </div>
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-name mono">MOCHAMMAD IJDIN ROZAQI · MARINE &amp; OFFSHORE STRUCTURAL ENGINEER</div>
+      <h1 class="hero-title">ENGINEERED<br>FOR THE <em>DEEP</em></h1>
+      <p class="hero-sub">Ocean Engineering graduate (ITS) working mooring, rigging, and structural analysis for offshore projects — from SPM relocations to platform decommissioning — backed by SACS, ANSYS, MAXSURF, and OrcaFlex.</p>
+      <div class="btn-row">
+        <a href="#thesis" class="btn btn-solid">View Thesis Case Study ⚓</a>
+        <a href="#experience" class="btn btn-ghost">See Experience ↓</a>
+      </div>
+    </div>
+    <div class="hero-plate" aria-hidden="true">
+      <span class="plate-label">FIG. 01 — MIDSHIP SECTION</span>
+      <svg viewBox="0 0 400 400">
+        <path class="hull-line" d="M40 260 Q40 320 120 330 L300 330 Q360 330 370 270 L370 180 L40 180 Z"/>
+        <path class="hull-line secondary" d="M60 180 L60 90 L150 60 L260 60 L320 90 L320 180"/>
+        <line class="hull-line" x1="40" y1="150" x2="370" y2="150" stroke-dasharray="4 6" style="animation-delay:1.4s;"/>
+        <circle class="hull-dot" cx="200" cy="255" r="10"/>
+        <circle class="hull-dot" cx="150" cy="255" r="4" style="animation-delay:2.6s;"/>
+        <circle class="hull-dot" cx="250" cy="255" r="4" style="animation-delay:2.7s;"/>
+      </svg>
+    </div>
+  </div>
+  <div class="scroll-cue"><span class="line"></span>SCROLL TO DIVE</div>
+</section>
+
+<!-- ============================ SECTION: ABOUT ============================
+     Portrait/work photo pinned polaroid-style. Recommended:
+     images/about.jpg, roughly square (800×800). ======================= -->
+<section id="about">
+  <div class="container">
+    <div class="eyebrow">PERSONNEL FILE</div>
+    <div class="about-photo photo-pin reveal">
+      <div class="frame photo-slot">
+        <div class="ph-label"><span class="ph-icon">🧑‍🔧</span><b>Your Photo</b>Portrait or work photo<br>(images/about.jpg · 800×800)</div>
+        <img src="images/about.jpg" alt="Portrait of Mochammad Ijdin Rozaqi" onerror="this.style.display='none'">
+      </div>
+      <div class="cap">ON SITE</div>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <h2 style="font-size:clamp(2rem,4vw,2.7rem); margin-bottom:20px;">About Me</h2>
+        <p>I'm Mochammad Ijdin Rozaqi, an Ocean Engineering graduate from Institut Teknologi Sepuluh Nopember (GPA 3.68/4.00). I bring dedication, curiosity, and a genuine passion for learning to every project — currently applying that as a Marine Engineer at PT. ZEE Engineering Indonesia, after starting out as an Intern Surveyor at Biro Klasifikasi Indonesia.</p>
+        <p>My thesis analyzed the design and strength of vertical turbine reservoir structures for energy utilization in open canals — a project that took me from concept sketches through Ansys-based structural analysis. Safety runs through everything I do: I hold the AK3 Umum certification plus thirteen more HSE and technical credentials.</p>
+        <div class="contact-row">
+          <a class="contact-pill" href="https://wa.me/6281249091882" target="_blank" rel="noopener">📱 +62 812-4909-1882</a>
+          <a class="contact-pill" href="mailto:didinrozaki@gmail.com">✉️ didinrozaki@gmail.com</a>
+          <a class="contact-pill" href="https://www.linkedin.com/in/mochammad-ijdin-rozaqi/" target="_blank" rel="noopener">in LinkedIn</a>
+        </div>
+        <div class="stat-row">
+          <div class="stat-card"><div class="num">3.68</div><div class="lbl">GPA · Ocean Eng., ITS</div></div>
+          <div class="stat-card"><div class="num" style="font-size:1.2rem;">ZEE ENG.</div><div class="lbl">Marine Engineer, Gresik</div></div>
+          <div class="stat-card"><div class="num">BKI</div><div class="lbl">Intern Surveyor, Jakarta</div></div>
+          <div class="stat-card"><div class="num">14</div><div class="lbl">HSE &amp; Tech. Certifications</div></div>
+        </div>
+      </div>
+      <div class="gauges reveal delay-2">
+        <div class="gauge-card" data-pct="90"><svg viewBox="0 0 170 100"><path d="M15 85 A70 70 0 0 1 155 85" fill="none" stroke="#DAE3E4" stroke-width="10"/><path class="arc" d="M15 85 A70 70 0 0 1 155 85" fill="none" stroke="#3E7C8C" stroke-width="10" stroke-dasharray="220" stroke-dashoffset="220"/></svg><div class="g-pct">90%</div><div class="g-label">Drafting &amp; Modelling</div></div>
+        <div class="gauge-card" data-pct="88"><svg viewBox="0 0 170 100"><path d="M15 85 A70 70 0 0 1 155 85" fill="none" stroke="#DAE3E4" stroke-width="10"/><path class="arc" d="M15 85 A70 70 0 0 1 155 85" fill="none" stroke="#3E7C8C" stroke-width="10" stroke-dasharray="220" stroke-dashoffset="220"/></svg><div class="g-pct">88%</div><div class="g-label">Structural Analysis</div></div>
+        <div class="gauge-card" data-pct="82"><svg viewBox="0 0 170 100"><path d="M15 85 A70 70 0 0 1 155 85" fill="none" stroke="#DAE3E4" stroke-width="10"/><path class="arc" d="M15 85 A70 70 0 0 1 155 85" fill="none" stroke="#3E7C8C" stroke-width="10" stroke-dasharray="220" stroke-dashoffset="220"/></svg><div class="g-pct">82%</div><div class="g-label">Project Management</div></div>
+        <div class="gauge-card" data-pct="90"><svg viewBox="0 0 170 100"><path d="M15 85 A70 70 0 0 1 155 85" fill="none" stroke="#DAE3E4" stroke-width="10"/><path class="arc" d="M15 85 A70 70 0 0 1 155 85" fill="none" stroke="#3E7C8C" stroke-width="10" stroke-dasharray="220" stroke-dashoffset="220"/></svg><div class="g-pct">90%</div><div class="g-label">HSE &amp; Safety</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SECTION: EXPERIENCE ============================
+     "Ship's Log" timeline. Optional project photo per entry.
+     Recommended size: roughly 4:3 (e.g. 600×450). ======================= -->
+<section id="experience">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">SHIP'S LOG</div><h2>Experience</h2></div>
+      <p>Professional postings, reverse-chronological.</p>
+    </div>
+    <div class="log">
+      <div class="log-entry reveal">
+        <div class="log-photo photo-pin">
+          <div class="frame photo-slot">
+            <div class="ph-label"><span class="ph-icon">⚓</span><b>Project Photo</b>ZEE Engineering work sample<br>(images/zee-work.jpg)</div>
+            <img src="images/zee-work.jpg" alt="PT. ZEE Engineering Indonesia project work" onerror="this.style.display='none'">
+          </div>
+          <div class="cap">OFFSHORE OPS</div>
+        </div>
+        <div class="log-meta"><span class="role">Marine Engineer</span><span class="date mono">OCT 2024 — PRESENT</span></div>
+        <div class="log-vessel mono">PT. ZEE Engineering Indonesia · Kebomas, Gresik</div>
+        <ul>
+          <li>UBH dynamic mooring analysis for EPC Relocation of SPM 35,000 DWT (RU VI Balongan), keeping seabed clearance above 1.4 m</li>
+          <li>Mooring analysis for riser &amp; spool installation at BG/BC — catenary, anchor pattern, and arrangement checks (excursion ≤ 10 m, zero uplift angle)</li>
+          <li>Material Take-Off documentation for the Paus Biru ZEEPod project across primary, secondary, and tertiary structures</li>
+          <li>Weight Control Report and jacket/topside rigging arrangement for Chevron Decommissioning (shackle SF ≥ 1.2, sling SF ≥ 3.12)</li>
+        </ul>
+      </div>
+      <div class="log-entry reveal delay-1">
+        <div class="log-photo photo-pin">
+          <div class="frame photo-slot">
+            <div class="ph-label"><span class="ph-icon">🚢</span><b>Survey Photo</b>BKI ship survey/docking photo<br>(images/bki-survey.jpg)</div>
+            <img src="images/bki-survey.jpg" alt="Biro Klasifikasi Indonesia ship survey" onerror="this.style.display='none'">
+          </div>
+          <div class="cap">CLASS SURVEY</div>
+        </div>
+        <div class="log-meta"><span class="role">Intern Surveyor</span><span class="date mono">AUG 2022 — OCT 2022</span></div>
+        <div class="log-vessel mono">Biro Klasifikasi Indonesia (BKI) · North Jakarta</div>
+        <ul>
+          <li>Inspected ships during docking, evaluating both reported and unreported damages</li>
+          <li>Verified completeness of welding certification and material specification documents</li>
+          <li>Carried out strength analysis for the materials used in the new-build ship</li>
+          <li>Joined sea trials to confirm the performance of the new-build vessel</li>
+        </ul>
+      </div>
+      <div class="log-entry reveal delay-2">
+        <div class="log-meta"><span class="role">Media &amp; Communications Staff</span><span class="date mono">2019 — 2022</span></div>
+        <div class="log-vessel mono">Offshore Oil Rig Club &amp; Technopreneurship Development Center · ITS</div>
+        <ul>
+          <li>Produced social media content — feeds, stories, and posters for student org activities and events</li>
+          <li>Prepared and delivered AutoCAD and SketchUp training sessions for delegates</li>
+          <li>Planned event concepts, project timelines, and job descriptions for organizational programs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SECTION: TECHNICAL ANALYSIS ============================
+     Real analysis work from the ZEE Engineering role. 3 cards, each with
+     a photo slot (recommended 16:10, e.g. images/analysis-1.jpg). ======================= -->
+<section id="analysis">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">ANALYSIS WORK</div><h2>Technical Analysis</h2></div>
+      <p>Mooring and structural analysis behind three offshore projects.</p>
+    </div>
+    <div class="analysis-grid">
+      <div class="analysis-card reveal">
+        <div class="analysis-thumb photo-slot"><div class="ph-label"><span class="ph-icon">⚓</span><b>UBH Analysis</b>images/analysis-1.jpg</div><img src="images/analysis-1.jpg" alt="UBH dynamic analysis" onerror="this.style.display='none'"></div>
+        <div class="analysis-body">
+          <div class="tag">Mooring &amp; Dynamics</div>
+          <h3>UBH Dynamic Analysis</h3>
+          <div class="proj">EPC Relocation of SPM 35,000 DWT · RU VI Balongan</div>
+          <p>Ensured the UBH mooring configuration met criteria across multiple situational cases, keeping clearance above 1.4 m from the seabed so there was no clash between the UBH and the seabed.</p>
+        </div>
+      </div>
+      <div class="analysis-card reveal delay-1">
+        <div class="analysis-thumb photo-slot"><div class="ph-label"><span class="ph-icon">🔗</span><b>Mooring Analysis</b>images/analysis-2.jpg</div><img src="images/analysis-2.jpg" alt="Mooring analysis for riser and spool installation" onerror="this.style.display='none'"></div>
+        <div class="analysis-body">
+          <div class="tag">Mooring &amp; Rigging</div>
+          <h3>Mooring Analysis</h3>
+          <div class="proj">Installation of Riser &amp; Spool at BG and BC</div>
+          <p>Evaluated mooring configuration through catenary checks, anchor pattern, and arrangement review — keeping excursion under 10 m with zero uplift angle at the anchor point.</p>
+        </div>
+      </div>
+      <div class="analysis-card reveal delay-2">
+        <div class="analysis-thumb photo-slot"><div class="ph-label"><span class="ph-icon">🌊</span><b>Spread Mooring</b>images/analysis-3.jpg</div><img src="images/analysis-3.jpg" alt="Spread mooring analysis using OrcaFlex" onerror="this.style.display='none'"></div>
+        <div class="analysis-body">
+          <div class="tag">Floating Structures</div>
+          <h3>Spread Mooring Analysis</h3>
+          <div class="proj">Hydrodynamics Laboratory, Ocean Eng. ITS</div>
+          <p>Trained in software-based planning and evaluation of floating-building mooring systems — running FPSO/Barge hydrostatic and hydrodynamic analysis in MOSES, and spread mooring analysis in OrcaFlex.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SECTION: THESIS CASE STUDY ============================
+     A 9-step walkthrough of the actual thesis design process, each step
+     with its own photo. This numbering is meaningful (real sequential
+     design steps), not decorative. Recommended photo size: 4:3.
+     Filenames: images/thesis-01.jpg through images/thesis-09.jpg. ======================= -->
+<section id="thesis">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">THESIS &amp; RESEARCH</div><h2>Design Case Study</h2></div>
+      <p>How one structure went from a canal survey to a validated design.</p>
+    </div>
+    <p class="thesis-title reveal"><b>Design and Strength Analysis of Vertical Turbine Reservoir Structures</b> for energy utilization in open canals — B.Eng. Thesis, Institut Teknologi Sepuluh Nopember.</p>
+    <div class="stepper">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-photo photo-slot"><div class="ph-label"><span class="ph-icon">📐</span><b>Site Survey</b>images/thesis-01.jpg</div><img src="images/thesis-01.jpg" alt="Conceptual design survey" onerror="this.style.display='none'"></div>
+        <div class="step-body"><h3>Conceptual Design</h3><p>Started from a location survey of the open canal, translating site limitations and regulatory constraints into a first design concept — calculations worked in parallel with AutoCAD drafting.</p></div>
+      </div>
+      <div class="step reveal delay-1">
+        <div class="step-num">02</div>
+        <div class="step-photo photo-slot"><div class="ph-label"><span class="ph-icon">📐</span><b>2D Drawing</b>images/thesis-02.jpg</div><img src="images/thesis-02.jpg" alt="2D concept design" onerror="this.style.display='none'"></div>
+        <div class="step-body"><h3>2D Concept Design</h3><p>Locked the concept into two-dimensional drawings that reflected every constraint identified during the survey.</p></div>
+      </div>
+      <div class="step reveal delay-2">
+        <div class="step-num">03</div>
+        <div class="step-photo photo-slot"><div class="ph-label"><span class="ph-icon">🧱</span><b>3D Model</b>images/thesis-03.jpg</div><img src="images/thesis-03.jpg" alt="3D design model" onerror="this.style.display='none'"></div>
+        <div class="step-body"><h3>3D Design Model</h3><p>Converted the 2D concept into a 3D model to see how the structure would actually stand in place.</p></div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <div class="step-photo photo-slot"><div class="ph-label"><span class="ph-icon">🖼️</span><b>Visualization</b>images/thesis-04.jpg</div><img src="images/thesis-04.jpg" alt="Structure illustration" onerror="this.style.display='none'"></div>
+        <div class="step-body"><h3>Structure Illustration</h3><p>Built a fuller visualization of the structure standing within the canal, for a clearer read on scale and placement.</p></div>
+      </div>
+      <div class="step reveal delay-1">
+        <div class="step-num">05</div>
+        <div class="step-photo photo-slot"><div class="ph-label"><span class="ph-icon">🔧</span><b>Refined Model</b>images/thesis-05.jpg</div><img src="images/thesis-05.jpg" alt="Refined design model" onerror="this.style.display='none'"></div>
+        <div class="step-body"><h3>Refined Model</h3><p>Layered in further calculations and engineering approaches to refine the design beyond the initial concept.</p></div>
+      </div>
+      <div class="step reveal delay-2">
+        <div class="step-num">06</div>
+        <div class="step-photo photo-slot"><div class="ph-label"><span class="ph-icon">⚗️</span><b>Experiment</b>images/thesis-06.jpg</div><img src="images/thesis-06.jpg" alt="Load experiment" onerror="this.style.display='none'"></div>
+        <div class="step-body"><h3>Experiment</h3><p>Ran physical experiments to capture the real load acting on the structure, grounding the analysis in measured data.</p></div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">07</div>
+        <div class="step-photo photo-slot"><div class="ph-label"><span class="ph-icon">📊</span><b>Strength Check</b>images/thesis-07.jpg</div><img src="images/thesis-07.jpg" alt="Structural analysis" onerror="this.style.display='none'"></div>
+        <div class="step-body"><h3>Structural Analysis</h3><p>Tested whether the structure was strong enough to function reliably as a power-generating structure.</p></div>
+      </div>
+      <div class="step reveal delay-1">
+        <div class="step-num">08</div>
+        <div class="step-photo photo-slot"><div class="ph-label"><span class="ph-icon">🌀</span><b>Deformation</b>images/thesis-08.jpg</div><img src="images/thesis-08.jpg" alt="Ansys deformation result" onerror="this.style.display='none'"></div>
+        <div class="step-body"><h3>Deformation (Ansys)</h3><p>Simulated deformation under load in Ansys to verify how the structure would behave under real operating conditions.</p></div>
+      </div>
+      <div class="step reveal delay-2">
+        <div class="step-num">09</div>
+        <div class="step-photo photo-slot"><div class="ph-label"><span class="ph-icon">🌀</span><b>Von-Mises</b>images/thesis-09.jpg</div><img src="images/thesis-09.jpg" alt="Ansys Von-Mises stress result" onerror="this.style.display='none'"></div>
+        <div class="step-body"><h3>Von-Mises Analysis (Ansys)</h3><p>Ran Von-Mises stress analysis on the turbine in Ansys to confirm the final design held up under stress.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SECTION: COURSE HIGHLIGHTS ============================
+     4 highlight cards from coursework. Recommended photo size: 4:3
+     (e.g. images/course-1.jpg through course-4.jpg). ======================= -->
+<section id="course">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">COURSEWORK</div><h2>Course Highlights</h2></div>
+      <p>Standout work from risk analysis, statistics, and design courses at ITS.</p>
+    </div>
+    <div class="course-grid">
+      <div class="course-card reveal">
+        <div class="thumb photo-slot"><div class="ph-label"><span class="ph-icon">📈</span><b>Lines Plan</b>images/course-1.jpg</div><img src="images/course-1.jpg" alt="Lines plan in Maxsurf" onerror="this.style.display='none'"></div>
+        <div class="info"><h3>Lines Plan</h3><p>Hull lines drawn using the CSA method in the Maxsurf application.</p></div>
+      </div>
+      <div class="course-card reveal delay-1">
+        <div class="thumb photo-slot"><div class="ph-label"><span class="ph-icon">🛳️</span><b>Gen. Arrangement</b>images/course-2.jpg</div><img src="images/course-2.jpg" alt="General arrangement drawing" onerror="this.style.display='none'"></div>
+        <div class="info"><h3>General Arrangement</h3><p>Mapped out how interior space is divided across a ship.</p></div>
+      </div>
+      <div class="course-card reveal delay-2">
+        <div class="thumb photo-slot"><div class="ph-label"><span class="ph-icon">🏗️</span><b>Deck Layout</b>images/course-3.jpg</div><img src="images/course-3.jpg" alt="Fixed platform deck layout" onerror="this.style.display='none'"></div>
+        <div class="info"><h3>Layout, Deck — Fixed Platform</h3><p>Planned the layout across multiple platform decks.</p></div>
+      </div>
+      <div class="course-card reveal">
+        <div class="thumb photo-slot"><div class="ph-label"><span class="ph-icon">🏗️</span><b>Platform Layout</b>images/course-4.jpg</div><img src="images/course-4.jpg" alt="Fixed platform overall layout" onerror="this.style.display='none'"></div>
+        <div class="info"><h3>Layout, Fixed Platform</h3><p>Defined the overall form of a complete fixed platform.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SECTION: CERTIFICATIONS ============================
+     3 featured cards + a chip list of remaining HSE certifications.
+     No photos required here. ======================= -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">CLASS &amp; CERTIFICATES</div><h2>Certifications</h2></div>
+      <p>Formal credentials and technical training behind the design work.</p>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card reveal"><div class="cert-seal">K3U</div><h3>AK3 Umum (General Occupational Safety &amp; Health Expert)</h3><div class="issuer">Indonesian Ministry of Manpower–accredited provider</div><div class="cert-id">CORE SAFETY CREDENTIAL</div></div>
+      <div class="cert-card reveal delay-1"><div class="cert-seal">SACS</div><h3>SACS Software Training</h3><div class="issuer">Ocean Engineering Student Association, ITS · 2022</div><div class="cert-id">FIXED PLATFORM MODELLING · IN-PLACE / SEISMIC / FATIGUE ANALYSIS</div></div>
+      <div class="cert-card reveal delay-2"><div class="cert-seal">MOOR</div><h3>Mooring Systems Training</h3><div class="issuer">Hydrodynamics Laboratory, Ocean Eng. ITS · 2022</div><div class="cert-id">MOSES HYDRODYNAMICS · ORCAFLEX SPREAD MOORING</div></div>
+    </div>
+    <div class="chip-cloud reveal delay-1">
+      <span class="chip">HACCP</span><span class="chip">BBS</span><span class="chip">H2S</span><span class="chip">Safety Leadership</span>
+      <span class="chip">HAZOPS</span><span class="chip">B3 Waste Processing</span><span class="chip">K3 Oil &amp; Gas</span>
+      <span class="chip">HSE Plan</span><span class="chip">Confined Space</span><span class="chip">Ergonomics</span>
+      <span class="chip">Hazard Identification</span><span class="chip">Inspection Techniques</span><span class="chip">ISO 19011:2018</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SECTION: DIGITAL DESIGN ============================
+     4 real design pieces, each with an Instagram link. Recommended
+     photo size: square (800×800). Filenames images/design-1.jpg … design-4.jpg. ======================= -->
+<section id="design">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">CREATIVE WORK</div><h2>Digital Design</h2></div>
+      <p>Book covers, IG feeds, posters, and video — made in the Adobe suite.</p>
+    </div>
+    <div class="design-grid">
+      <div class="design-card reveal">
+        <div class="design-thumb photo-slot"><div class="ph-label"><span class="ph-icon">📕</span><b>Book Cover</b>images/design-1.jpg</div><img src="images/design-1.jpg" alt="Book cover and Instagram feed design" onerror="this.style.display='none'"></div>
+        <div class="design-info"><div class="tag">Book Cover &amp; IG Feed</div><h3>@storemaba Study Guide</h3><p>Designed a book cover and Instagram feed for a study guide compiling past exam questions for incoming students.</p><a class="ig-link" href="https://www.instagram.com/p/CNFXjz8jFaw/?igsh=MTdsNWhvdnh4anBqcg==" target="_blank" rel="noopener">View on Instagram ↗</a></div>
+      </div>
+      <div class="design-card reveal delay-1">
+        <div class="design-thumb photo-slot"><div class="ph-label"><span class="ph-icon">📣</span><b>Poster</b>images/design-2.jpg</div><img src="images/design-2.jpg" alt="Training session poster" onerror="this.style.display='none'"></div>
+        <div class="design-info"><div class="tag">Poster</div><h3>AutoCAD &amp; SketchUp Training</h3><p>Poster promoting an AutoCAD and SketchUp training session for Ocean Engineering students, for @oorc_its.</p><a class="ig-link" href="https://www.instagram.com/p/CO9q16BNGII/?igsh=MTJtZWUxYjVvdHlteg==" target="_blank" rel="noopener">View on Instagram ↗</a></div>
+      </div>
+      <div class="design-card reveal delay-2">
+        <div class="design-thumb photo-slot"><div class="ph-label"><span class="ph-icon">🎬</span><b>Video</b>images/design-3.jpg</div><img src="images/design-3.jpg" alt="Kertas Putih video" onerror="this.style.display='none'"></div>
+        <div class="design-info"><div class="tag">Video</div><h3>"Kertas Putih" — SMANEMA HUT 32</h3><p>Directed and edited a video celebrating SMANEMA's 32nd anniversary, for @smanema.</p><a class="ig-link" href="https://www.instagram.com/p/BrMSCRPjalQ/?igsh=MXdyMDBtNGNkeXg3aw==" target="_blank" rel="noopener">View on Instagram ↗</a></div>
+      </div>
+      <div class="design-card reveal">
+        <div class="design-thumb photo-slot"><div class="ph-label"><span class="ph-icon">📣</span><b>Poster</b>images/design-4.jpg</div><img src="images/design-4.jpg" alt="Sharing session poster" onerror="this.style.display='none'"></div>
+        <div class="design-info"><div class="tag">Poster</div><h3>Oil Rig Design Competition</h3><p>Poster promoting a sharing session about the Oil Rig Design Competition, for @oorc_its.</p><a class="ig-link" href="https://www.instagram.com/p/CVukfsQF4O9/?igsh=MXNqZ3RudDdodGh4cQ==" target="_blank" rel="noopener">View on Instagram ↗</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SECTION: MOTIVATION ============================
+     Full-bleed mood background. Recommended: images/motivation.jpg,
+     1920×1080+, ocean/offshore/sunset works well. ======================= -->
+<section id="motivation">
+  <div class="motivation-photo photo-slot" aria-hidden="true">
+    <div class="ph-label"><span class="ph-icon">🌅</span><b>Mood Photo</b>Ocean/offshore/sunset background<br>(images/motivation.jpg · 1920×1080+)</div>
+    <img src="images/motivation.jpg" alt="" onerror="this.style.display='none'">
+  </div>
+  <svg class="compass" viewBox="0 0 200 200" aria-hidden="true">
+    <circle cx="100" cy="100" r="95" fill="none" stroke="#16232E" stroke-width="0.6"/>
+    <circle cx="100" cy="100" r="70" fill="none" stroke="#16232E" stroke-width="0.4"/>
+    <line x1="100" y1="5" x2="100" y2="195" stroke="#16232E" stroke-width="0.5"/>
+    <line x1="5" y1="100" x2="195" y2="100" stroke="#16232E" stroke-width="0.5"/>
+    <polygon points="100,20 108,100 100,180 92,100" fill="#16232E"/>
+  </svg>
+  <div class="container motivation-inner">
+    <div class="eyebrow" style="justify-content:center;">WHY I DO THIS</div>
+    <h2 class="quote reveal">"A structure doesn't care how confident your calculation was — <span>only whether it holds.</span>"</h2>
+    <p class="body-copy reveal delay-1">That's the standard I hold my own work to. I'm a recent Ocean Engineering graduate driven by curiosity and a genuine appetite for learning — eager to bring fresh eyes and real solutions to any team I join, and excited by the challenge of thriving in a fast-moving professional environment.</p>
+    <p class="body-copy reveal delay-2">My path so far has taken me from inspecting ships against classification rules at Biro Klasifikasi Indonesia to running mooring and structural analysis on offshore projects at PT. ZEE Engineering Indonesia — two vantage points on the same question: will this hold up in the real world? I plan to keep chasing that question.</p>
+  </div>
+</section>
+
+<!-- ============================ SECTION: CONTACT ============================
+     No photo — just contact details. Double-check these are correct. ======================= -->
+<section id="contact">
+  <div class="container contact-grid">
+    <div class="reveal">
+      <div class="eyebrow">GET IN TOUCH</div>
+      <h2 style="font-size:clamp(2rem,5vw,3.2rem);">Open to my<br>next project.</h2>
+    </div>
+    <ul class="contact-links reveal delay-1">
+      <li><span class="lbl">EMAIL</span><a href="mailto:didinrozaki@gmail.com">didinrozaki@gmail.com</a></li>
+      <li><span class="lbl">PHONE / WA</span><a href="https://wa.me/6281249091882" target="_blank" rel="noopener">+62 812-4909-1882</a></li>
+      <li><span class="lbl">LINKEDIN</span><a href="https://www.linkedin.com/in/mochammad-ijdin-rozaqi/" target="_blank" rel="noopener">linkedin.com/in/mochammad-ijdin-rozaqi</a></li>
+      <li><span class="lbl">BASED IN</span><a href="#">Gresik, East Java, Indonesia</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 MOCHAMMAD IJDIN ROZAQI — MARINE &amp; OFFSHORE ENGINEER</span>
+  <span>PHOTOS: YOUR OWN — UPLOAD TO REPLACE PLACEHOLDERS</span>
+</footer>
+
+<!-- ============================ SCRIPT ============================
+     Animation logic only. If you add/remove sections, update the
+     section IDs used for nav highlighting below. ======================= -->
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  const gaugeCards = document.querySelectorAll('.gauge-card');
+  const gio = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        const pct = parseInt(e.target.dataset.pct, 10);
+        const arc = e.target.querySelector('.arc');
+        const offset = 220 - (220 * pct / 100);
+        arc.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(.2,.9,.2,1)';
+        arc.style.strokeDashoffset = offset;
+        gio.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  gaugeCards.forEach(c => gio.observe(c));
+
+  const gaugeFill = document.getElementById('gaugeFill');
+  const gaugeReadout = document.getElementById('gaugeReadout');
+  function updateGauge(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = Math.min(1, Math.max(0, scrollTop / docHeight));
+    gaugeFill.style.height = (progress * 100) + '%';
+    gaugeReadout.textContent = (progress * 12).toFixed(1);
+  }
+  window.addEventListener('scroll', updateGauge, { passive: true });
+  updateGauge();
+
+  const sections = document.querySelectorAll('section[id]');
+  const navA = document.querySelectorAll('.navlinks a[data-nav]');
+  const navIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const link = document.querySelector('.navlinks a[href="#' + e.target.id + '"]');
+      if(!link) return;
+      if(e.isIntersecting){ navA.forEach(a=>a.classList.remove('active')); link.classList.add('active'); }
+    });
+  }, { threshold: 0.35 });
+  sections.forEach(s => navIo.observe(s));
+</script>
+
+</body>
+</html>
