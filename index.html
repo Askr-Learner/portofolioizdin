@@ -77,6 +77,12 @@
   .ph-label .ph-icon{font-size:1.5rem;}
   .ph-label b{color:var(--sea-deep); text-transform:uppercase; letter-spacing:0.05em;}
   .photo-slot img{position:relative; z-index:1;}
+  .photo-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
   /* ============================================================
      DRAFT-MARK SCROLL GAUGE — signature scroll-progress element,
      styled like the waterline draft marks painted on a ship hull.
@@ -151,7 +157,10 @@
   .about-photo{width:170px; margin-left:auto; margin-bottom:-84px; position:relative; z-index:3; transform:rotate(-3deg);}
   @media (max-width:900px){ .about-photo{margin:0 0 26px; transform:rotate(-2deg);} }
   .photo-pin{position:relative; background:var(--paper); padding:10px 10px 30px; box-shadow:0 20px 38px -20px rgba(22,35,46,0.4); border:1px solid var(--line);}
-  .photo-pin .frame{position:relative; overflow:hidden; aspect-ratio:4/3;}
+  .photo-pin .frame {
+  aspect-ratio: 800 / 1106;
+  overflow: hidden;
+}
   .photo-pin img{width:100%; height:100%; object-fit:cover; display:block;}
   .photo-pin::before{content:""; position:absolute; top:-8px; left:50%; transform:translateX(-50%); width:14px; height:14px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #E3B48C, var(--brass-deep)); box-shadow:0 3px 6px rgba(0,0,0,0.35); z-index:2;}
   .photo-pin .cap{position:absolute; left:10px; right:10px; bottom:9px; font-family:'IBM Plex Mono'; font-size:0.58rem; letter-spacing:0.05em; color:var(--ink-soft); text-transform:uppercase;}
@@ -202,11 +211,30 @@
   .thesis-title{font-size:clamp(1.3rem, 3vw, 1.8rem); max-width:760px; color:var(--ink-soft); margin-bottom:54px; font-family:'IBM Plex Sans'; text-transform:none; letter-spacing:0; font-weight:500;}
   .thesis-title b{color:var(--ink); font-weight:600;}
   .stepper{position:relative; padding-left:60px; border-left:1px solid var(--line);}
-  .step{position:relative; padding-bottom:64px; display:grid; grid-template-columns:150px 1fr; gap:22px; align-items:start;}
+  .step {
+    position: relative;
+    padding-bottom: 64px;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 22px;
+}
   .step:last-child{padding-bottom:0;}
   .step-num{position:absolute; left:-88px; top:-2px; width:52px; height:52px; border-radius:50%; background:var(--paper); border:2px solid var(--sea); display:flex; align-items:center; justify-content:center; font-family:'Big Shoulders Stencil'; font-weight:800; font-size:1.2rem; color:var(--sea-deep);}
   @media (max-width:760px){ .step{grid-template-columns:1fr; gap:16px;} .step-num{position:static; margin-bottom:10px;} .stepper{padding-left:0; border-left:none;} }
-  .step-photo{aspect-ratio:4/3; border:1px solid var(--line);}
+  .step-photo {position: relative;aspect-ratio: 4 / 3;border: 1px solid var(--line);overflow: hidden;}
+  .step-photo {
+    width: 100%;
+    max-width: 700px;   /* adjust as needed */
+    aspect-ratio: 4/3;
+    position: relative;
+}
+.step-photo {
+    grid-column: 2;
+}
+.step-body {
+    grid-column: 2;
+}
+  .step-photo img {position: relative; z-index: 1;}
   .step-body h3{font-family:'IBM Plex Sans'; text-transform:none; letter-spacing:0; font-weight:700; font-size:1.15rem; margin-bottom:8px;}
   .step-body p{color:var(--ink-soft); font-size:0.92rem; max-width:520px;}
 
@@ -459,9 +487,9 @@
         <div class="analysis-thumb photo-slot"><div class="ph-label"><span class="ph-icon">🔗</span><b>Mooring Analysis</b>images/analysis-2.jpg</div><img src="images/analysis-2.jpg" alt="Mooring analysis for riser and spool installation" onerror="this.style.display='none'"></div>
         <div class="analysis-body">
           <div class="tag">Mooring &amp; Rigging</div>
-          <h3>Mooring Analysis</h3>
-          <div class="proj">Installation of Riser &amp; Spool at BG and BC</div>
-          <p>Evaluated mooring configuration through catenary checks, anchor pattern, and arrangement review — keeping excursion under 10 m with zero uplift angle at the anchor point.</p>
+          <h3>SPM Mooring Analysis</h3>
+          <div class="proj">EPC Relocation of SPM 35,000 DWT · RU VI Balongan</div>
+          <p>Evaluated single point mooring condition during operational and survival condition. Also maintaining the safety factor above 1.67 and 1.25 during damage simulation. </p>
         </div>
       </div>
       <div class="analysis-card reveal delay-2">
@@ -469,8 +497,8 @@
         <div class="analysis-body">
           <div class="tag">Floating Structures</div>
           <h3>Spread Mooring Analysis</h3>
-          <div class="proj">Hydrodynamics Laboratory, Ocean Eng. ITS</div>
-          <p>Trained in software-based planning and evaluation of floating-building mooring systems — running FPSO/Barge hydrostatic and hydrodynamic analysis in MOSES, and spread mooring analysis in OrcaFlex.</p>
+          <div class="proj">Installation of Riser &amp; Spool at BG and B</div>
+          <p>Evaluated mooring configuration through catenary checks, anchor pattern, and arrangement review — keeping excursion under 10 m with zero uplift angle at the anchor point</p>
         </div>
       </div>
     </div>
